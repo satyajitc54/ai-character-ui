@@ -1,5 +1,5 @@
-const API_KEY = "AIza-your-gemini-key-here";  // ← Paste your key
-const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`;
+const API_KEY = "AIzaSyBI5AKR7UDoOMX64gwyw_O0BFQTk42S0i0"; 
+const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
 
 export async function sendMessage(message, history = []) {
   try {
@@ -11,6 +11,8 @@ export async function sendMessage(message, history = []) {
           role: "user",
           parts: [{
             text: `You are Sakura, my anime personal assistant. Be friendly and helpful with bookings, code, Japanese, and real-time info.
+                  Always use the most up-to-date information available on the internet as of 2026. 
+                  If something changed recently, prefer the latest data, not older summaries or cached knowledge.
 
 Previous chat: ${history.slice(-3).join("\n")}
 
@@ -24,10 +26,17 @@ User: ${message}`
       })
     });
 
+    
     const data = await response.json();
+    
+    if (data.error) {
+      throw new Error(data.error.message);
+    }
+    
     return data.candidates[0].content.parts[0].text;
   } catch (error) {
-    return "Sorry Sakura is having trouble connecting! 😅";
+    console.error("Gemini error:", error);
+    return "🌸 Sakura: Oops, connection glitch! Try again desu~ 😅";
   }
 }
 

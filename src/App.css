@@ -167,7 +167,11 @@
 
 .input-bar {
   display: flex;
-  gap: 12px;
+  gap: 8px;
+  padding: 4px;
+  background: rgba(15, 23, 42, 0.7);
+  border-radius: 24px;
+  backdrop-filter: blur(10px);
 }
 
 .input-bar input {
@@ -200,6 +204,19 @@
   box-shadow: 0 10px 30px rgba(79, 70, 229, 0.6);
 }
 
+
+.input-bar button:nth-child(2) { /* Voice */
+  background: linear-gradient(135deg, #f59e0b, #ef4444);
+  color: white;
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+}
+
+.input-bar button:last-child { /* Send */
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  color: white;
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
+}
+
 /* ============ BACKGROUND SELECTOR ============ */
 
 .bg-selector {
@@ -224,4 +241,36 @@
 .bg-selector option {
   background: #0a0f1f;
   color: white;
+}
+
+
+.messages-container {
+  max-height: 200px;
+  overflow-y: auto;
+  margin-bottom: 12px;
+  padding: 12px;
+  background: rgba(15, 23, 42, 0.4);
+  border-radius: 16px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.message {
+  margin-bottom: 8px;
+  padding: 10px 14px;
+  border-radius: 18px;
+  max-width: 85%;
+  font-size: 15px;
+  word-break: break-word;
+}
+
+.message.user {
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  color: white;
+  margin-left: auto;
+}
+
+.message.assistant {
+  background: rgba(75, 85, 99, 0.6);
+  color: #e5e7eb;
+  border: 1px solid rgba(148, 163, 184, 0.3);
 }
